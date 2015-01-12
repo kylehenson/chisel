@@ -1,14 +1,13 @@
 class StrongTag
 
   def parse(document)
-    document[0..1] == "**"
-    document.sub!("**","<strong>")
-    if document[-2..-1] == "**"
-      document.sub!("**","</strong>")
-      document.gsub!("&", "&amp;") 
+    document.gsub!(/\*\*(...+)\*\*/) do |emphasis|
+      "<strong>#{$1}</strong>"
     end
-    document
   end
-   
+
+  def change_ampersand(document)
+    document.gsub!("&", "&amp;")
+  end
+
  end
-   
