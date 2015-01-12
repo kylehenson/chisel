@@ -2,7 +2,7 @@ require './test_helper'
 require '../lib/list'
 
 class ListTest < Minitest::Test
-  attr_reader :list
+  attr_reader :list, :document
 
   def setup
     @document = "* Sushi\n* Barbeque\n* Mexican"
@@ -21,6 +21,6 @@ class ListTest < Minitest::Test
 <li>Barbeque</li>
 <li>Mexican</li>
 </ul>"
-    assert_equal parsed, list.parse(document)
+    assert_equal parsed, list.parse
   end
 end
